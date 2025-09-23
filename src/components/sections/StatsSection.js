@@ -3,16 +3,16 @@ import { Container, Grid, Typography, Box } from '@mui/material';
 
 const stats = [
   {
-    value: '500+',
-    label: 'courts connected',
+    value: '200000+',
+    label: 'Vehicles Connected',
   },
   {
     value: '100,000+',
-    label: 'cases managed',
+    label: 'Workspaces & parkings managed',
   },
   {
     value: '75%',
-    label: 'faster case processing',
+    label: 'Faster user engagement processed',
   },
 ];
 
@@ -36,11 +36,11 @@ const StatsSection = () => {
         >
           Delivering{' '}
           <Box component="span" sx={{ color: '#f8b217', fontWeight: 700, fontStyle: 'italic' }}>
-            justice
+            Parking Solutions
           </Box>
           {' '}across every{' '}
           <Box component="span" sx={{ fontWeight: 600 }}>
-            jurisdiction
+            workSpace.
           </Box>
         </Typography>
         <Typography

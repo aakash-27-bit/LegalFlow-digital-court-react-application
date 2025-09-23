@@ -21,21 +21,18 @@ const HeroSection = () => {
                   fontWeight: 300,
                   color: "white",
                   mb: 3,
-                  fontSize: { xs: "2.5rem", md: "3.5rem" },
+                  fontSize: { xs: "1.5rem", md: "3.5rem" },
                   fontFamily: "serif",
                   lineHeight: 1.1,
                 }}
               >
-                Digital{" "}
-                <Box
-                  component="span"
-                  sx={{ fontStyle: "italic", fontWeight: 400 }}
-                >
-                  Legal Court Case Management
-                </Box>{" "}
-                for{" "}
+                Our{' '}
+                <Box component="span" sx={{ fontStyle: "italic", fontWeight: 400 }}>
+                  Parking Management System
+                </Box>{' '}
+                offers a productive implementation of the{' '}
                 <Box component="span" sx={{ fontWeight: 600 }}>
-                  Management System
+                  parking resources.
                 </Box>
               </Typography>
               <Typography
@@ -48,9 +45,7 @@ const HeroSection = () => {
                   fontStyle: "italic",
                 }}
               >
-                Transform your judicial operations with our comprehensive
-                digital ecosystem. Orchestrate cases, coordinate hearings, and
-                connect legal professionals through innovative technology.
+                Transform your unused, unleased or otherwise unproductive parking spaces into extra income by filling them with tenants or public – who can find, book and pay through the app.
               </Typography>
               <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
                 <Button

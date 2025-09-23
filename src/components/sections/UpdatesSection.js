@@ -73,7 +73,7 @@ const UpdatesSection = () => {
               textAlign: 'left',
             }}
           >
-            Real-Time Legal Updates & Notifications
+            Streamline parking operations for both public and private lots.
           </Typography>
           <Box display="flex" flexDirection="column" gap={0.5} marginBottom={5}>
             <div className="bright-pointer"><span className="bullet">•</span>End-to-end data encryption</div>

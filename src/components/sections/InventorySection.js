@@ -37,7 +37,7 @@ const InventorySection = () => {
             Simplify Workload with Us!
           </Typography>
           <Typography
-            variant="h4"
+            variant="h6"
             sx={{
               fontWeight: 800,
               color: '#FFB940',
@@ -49,12 +49,13 @@ const InventorySection = () => {
               textAlign: 'left',
             }}
           >
-            Judiciary-Ready Workflow Management System
+            Effortlessly manage parking spaces, reservations, and payments all in one platform.
           </Typography>
           <Box display="flex" flexDirection="column" gap={0.5} marginBottom={5}>
-            <div className="bright-pointer"><span className="bullet">•</span>Monitor case status across departments and benches</div>
-            <div className="bright-pointer"><span className="bullet">•</span>Automatically generate cause lists, hearing schedules, and legal notices</div>
-            <div className="bright-pointer"><span className="bullet">•</span>Track judicial decisions, appeals, and case movements from a unified interface</div>
+            <div className="bright-pointer"><span className="bullet">•</span>Real-time space availability and automated entry/exit logs.</div>
+            <div className="bright-pointer"><span className="bullet">•</span>Seamless online booking and payment integration. Secure access control and user management.
+            </div>
+            <div className="bright-pointer"><span className="bullet">•</span>Comprehensive reports and analytics for better decision-making</div>
           </Box>
           <Link to="/contact-us">
             <Button

@@ -10,35 +10,53 @@ import "./JourneySection.styles.css";
 const cards = [
   {
     key: "catalog",
-    title: "Organised case files and recordings",
+    title: "Advanced Product Features:",
     description:
-      "Digitize and organize all case files, petitions, evidence, and documents — accessible anytime, anywhere.",
+      (<div className="journey-steps">
+        <div>
+          <span className="journey-step-desc">Dynamic Pricing: <span className="journey-step-highlight"> Use yield management to adjust prices based on demand periods.</span></span>
+        </div>
+        <div>
+          <span className="journey-step-desc">User Account Management:  <span className="journey-step-highlight"> Offer account registration, vehicle management, booking history, and notifications for users.</span></span>
+        </div>
+      </div>),
     img: sentenceImg,
     alt: "Legal System",
     highlight: true,
   },
   {
     key: "shipping",
-    title: "Centralized Case Repository",
-    description:
-      "Easily manage cases across different court branches and jurisdictions from one dashboard.",
+    title: "Centralized Slot Mapping and Smart Allocation:",
+    description: (
+      <div className="journey-steps">
+        <div>
+          <span className="journey-step-label">Step 1:</span> <span className="journey-step-desc">Real-Time Parking Space Monitoring: <span className="journey-step-highlight">   Display live updates of available parking spaces and lot status to users and administrators</span></span>
+        </div>
+        <div>
+          <span className="journey-step-label">Step 2:</span> <span className="journey-step-desc">Multiple Payment Options:  <span className="journey-step-highlight"> Integrate various payment methods (credit/debit cards, digital wallets, QR scan-and-pay) for convenient and secure transactions.</span></span>
+        </div>
+        <div>
+          <span className="journey-step-label">Step 3:</span> <span className="journey-step-desc">Reporting and Analytics: <span className="journey-step-highlight">Securely attach briefs, judgments, and legal notices.</span></span>
+        </div>
+      </div>
+    ),
     img: flatSystemImg,
     alt: "System Management",
     highlight: true,
   },
   {
     key: "processing",
-    title: "Quick 3-Step Case Lifecycle Management",
+    title: "Quick 3-Step Application Features:",
     description: (
       <div className="journey-steps">
         <div>
-          <span className="journey-step-label">Step 1:</span> <span className="journey-step-desc">Automated Case Registration – <span className="journey-step-highlight">Instantly register and assign new cases.</span></span>
+          <span className="journey-step-label">Step 1:</span> <span className="journey-step-desc">Real-Time Parking Space Monitoring: <span className="journey-step-highlight">   Display live updates of available parking spaces and lot status to users and administrators</span></span>
         </div>
         <div>
-          <span className="journey-step-label">Step 2:</span> <span className="journey-step-desc">Smart Hearing Scheduler – <span className="journey-step-highlight">Schedule hearings with conflict checks and judge availability.</span></span>
+          <span className="journey-step-label">Step 2:</span> <span className="journey-step-desc">Multiple Payment Options:  <span className="journey-step-highlight"> Integrate various payment methods (credit/debit cards, digital wallets, QR scan-and-pay) for convenient and secure transactions.</span></span>
         </div>
         <div>
-          <span className="journey-step-label">Step 3:</span> <span className="journey-step-desc">One-Click Document Uploads – <span className="journey-step-highlight">Securely attach briefs, judgments, and legal notices.</span></span>
+          <span className="journey-step-label">Step 3:</span> <span className="journey-step-desc">Reporting and Analytics: <span className="journey-step-highlight">Securely attach briefs, judgments, and legal notices.</span></span>
         </div>
       </div>
     ),
@@ -95,7 +113,7 @@ const JourneySection = () => {
 
   return (
     <section className="journey-section" onWheel={handleWheel} tabIndex={0} style={{ outline: 'none' }}>
-      <Container className="m-0 p-0">
+      <Container className="m-0 p-0 word-spacing-[5px]">
         <Typography
           variant="h3"
           align="center"
@@ -105,15 +123,16 @@ const JourneySection = () => {
             color: "#222",
             fontFamily: "Playfair Display, serif",
             letterSpacing: "-0.5px",
-            lineHeight: 1.2,
+            lineHeight: 1.05,
+            wordSpacing: "0.4px",
           }}
         >
-          How LegalFlow Streamlines the{" "}
+          How HighWheels provides{" "}
           <Box
             component="span"
-            sx={{ color: "white", fontWeight: 700, fontStyle: "italic" }}
+            sx={{ color: "white", fontWeight: 800, fontStyle: "italic" }}
           >
-            Judiciary Process
+            parking solutions for businesses of all sizes.
           </Box>
         </Typography>
         <Grid

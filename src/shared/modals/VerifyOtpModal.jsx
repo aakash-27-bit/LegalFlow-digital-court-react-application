@@ -15,9 +15,7 @@ const VerifyOtpModal = ({
     email,
     onVerificationSuccess
 }) => {
-
     const [errorMsg, setErrorMsg] = useState('');
-
     const submitOtp = async (event) => {
         event.preventDefault();
         setIsLoading(true);

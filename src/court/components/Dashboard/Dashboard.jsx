@@ -9,7 +9,7 @@ import Button from "../../../shared/formElements/Button";
 import AdminDashboard from "../AdminDB/AdminDashboard";
 import LoadingSpinner from "../../../shared/UIelements/LoadingSpinner";
 import ErrorModal from "../../../shared/modals/ErrorModal";
-
+import { allDummyCases as data } from "../../../constants/data/dummyCasesList";
 import { setData } from "../../../features/CourtAccount/CaseReducers";
 import { lawyersData, ROLES, STATUS } from "../../../constants/constants";
 import errorScreen from "../../../assets/error_screen.png";
@@ -21,12 +21,12 @@ const Dashboard = () => {
     let filter = {};
     if (role === ROLES.ADMIN) filter = { status: STATUS.FILED };
 
-    const { data, error, loading, refetch } = useGetAllCases(`${role}/${userId}`, filter);
+    const { data2, error, refetch } = useGetAllCases(`${role}/${userId}`, filter);
 
-    setData(data);
+    setData(data2);
 
-    if (loading) { return <><LoadingSpinner asOverlay /></> }
-    if (error) { return <ErrorModal error={error} onClear={refetch} /> }
+    if (0) { return <><LoadingSpinner asOverlay /></> }
+    if (!error) { return <ErrorModal error={error} onClear={refetch} /> }
     // If user and no cases, show error image
     if (!data?.allCases || !Array.isArray(data.allCases) || data.allCases.length === 0) {
         return (

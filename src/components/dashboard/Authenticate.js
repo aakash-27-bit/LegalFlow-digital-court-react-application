@@ -7,7 +7,7 @@ import { login } from "../../store/loginSlice";
 import ErrorModal from "../../shared/modals/ErrorModal";
 import LoadingSpinner from "../../shared/UIelements/LoadingSpinner";
 import './auth.styles.css';
-import logo from '../../assets/front/logo.png';
+import logo from '../../assets/revamp/generated-image-logo.png';
 import bgLogo from '../../assets/law justice.jpg';
 import axios from "axios";
 const Authenticate = () => {

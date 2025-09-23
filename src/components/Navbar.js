@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './Navbar.css';
-import logo from '../assets/front/small_logo.png';
+import logo from '../assets/revamp/navbar_logo.png';
 import { useNavigate } from "react-router";
 const sections = [
   { id: "hero-section-wrapper", label: "Get Started" },
-  { id: "journey-section-wrapper", label: "Why LegalFlow" },
+  { id: "journey-section-wrapper", label: "Why HighWheels" },
   { id: "inventory-section-wrapper", label: "Outcomes" },
   // { id: "stats-section-wrapper", label: "Stats" },
   { id: "steps-section-wrapper", label: "Steps" },

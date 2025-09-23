@@ -26,7 +26,7 @@ const FinalCTASection = () => {
             lineHeight: 1.2,
           }}
         >
-          Ready to modernize your court case management?
+          Ready to modernize your Parking?
           <Box
             component="span"
             sx={{ fontWeight: 700, color: '#F4B400', fontStyle: 'italic', fontFamily: 'Playfair Display, serif' }}
@@ -39,11 +39,11 @@ const FinalCTASection = () => {
           sx={{
             fontSize: '1.15rem',
             color: '#333333',
-            maxWidth: 600,
             mx: 'auto',
+            px: 8,
             mb: 4,
             fontFamily: 'Open Sans, sans-serif',
-            fontWeight: 500,
+            fontWeight: 800,
             letterSpacing: '-0.2px',
           }}
         >

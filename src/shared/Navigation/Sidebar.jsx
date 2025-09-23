@@ -2,21 +2,17 @@ import { userSideBar, adminSideBar, ROLES } from "../../constants/constants";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import logoImage from '../../assets/front/white_logo.png';
+import logoImage from '../../assets/revamp/navbar_logo.png';
 
 const Sidebar = () => {
     const location = useLocation();
-
-
     let options = userSideBar;
-
     const role = useSelector((state) => state.userAccount.role);
     if (role === ROLES.ADMIN) options = adminSideBar;
-
     return (
         <div className="sticky left-0 top-0 z-10 h-[100vh] w-56 bg-[#213555] shadow-lg flex flex-col overflow-none">
             <div className=" flex items-center">
-                <img src={logoImage} alt="Logo" className="h-16 w-full" />
+                <img src={logoImage} alt="Logo" className="h-24 w-full" />
             </div>
             <ul className="mt-6 space-y-2 text-white">
                 {options.map((item, index) => {

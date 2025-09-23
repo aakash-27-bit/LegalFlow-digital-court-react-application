@@ -18,7 +18,7 @@
 }
 .home-container {
   position: relative;
-  background-image: url('../assets/court-background.png');
+  background-image: url('../assets/revamp/background_img.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -40,7 +40,6 @@
   z-index: 1;
   pointer-events: none;
 }
-
 
 .home-section {
   position: relative;
@@ -150,7 +149,7 @@
 
 .steps-section-wrapper {
   background: rgba(248, 251, 255, 0.9);
-  border-radius: 30px !important;
+  border-radius: 18px !important;
   margin-bottom: 80px;
 }
 
@@ -169,7 +168,7 @@
   .home-section {
     margin: 10px;
     padding: 20px 15px;
-    border-radius: 15px;
+    border-radius: 18px;
   }
 }
 
@@ -177,6 +176,6 @@
   .home-section {
     margin: 5px;
     padding: 15px 10px;
-    border-radius: 10px;
+    border-radius: 18px;
   }
 }

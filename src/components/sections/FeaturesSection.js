@@ -18,94 +18,94 @@ import './featuresSection.styles.css';
 
 const featuresTabs = [
   {
-    label: 'Case Management',
+    label: 'Parking Management',
     image: orderManagementImg,
-    title: 'Comprehensive case tracking across all jurisdictions',
-    desc: 'Streamline your legal case management with a unified digital platform.',
+    title: 'Centralized control of parking zones and slots',
+    desc: 'Manage all your parking facilities from a unified digital dashboard.',
     pointers: [
       {
         icon: <MdStoreMallDirectory size={32} color="#FFB940" />,
-        title: 'Multi-court integration',
-        desc: 'Connect with multiple court systems and jurisdictions from a single dashboard',
+        title: 'Multi-location integration',
+        desc: 'Oversee multiple parking lots and garages across different regions in one system',
       },
       {
         icon: <FaBoxes size={32} color="#FFB940" />,
-        title: 'Bulk case processing',
-        desc: 'Handle multiple cases efficiently with automated workflows and batch operations',
+        title: 'Bulk slot configuration',
+        desc: 'Configure and update multiple parking slots simultaneously with batch operations',
       },
       {
         icon: <MdInventory size={32} color="#FFB940" />,
-        title: 'Document management',
-        desc: 'Organize and track all case documents, evidence, and legal filings in real-time',
+        title: 'Digital permit management',
+        desc: 'Issue, track, and validate parking permits and passes in real-time',
       },
     ],
   },
   {
     label: 'Automation',
     image: automationImg,
-    title: 'Automate your legal workflow processes',
-    desc: 'Speed up court operations by automating routine legal tasks effortlessly',
+    title: 'Automate your parking operations',
+    desc: 'Boost efficiency by automating routine parking tasks and workflows.',
     pointers: [
       {
         icon: <MdLocalShipping size={32} color="#FFB940" />,
-        title: 'Smart case assignment',
-        desc: 'Automatically assign cases to appropriate judges and courts based on jurisdiction and availability',
+        title: 'Smart slot assignment',
+        desc: 'Automatically allocate parking slots based on vehicle type, availability, and user preferences',
       },
       {
         icon: <MdOutlineReceiptLong size={32} color="#FFB940" />,
-        title: 'Auto-document generation',
-        desc: 'Generate court notices, summons, and legal documents automatically in seconds',
+        title: 'Auto-ticket generation',
+        desc: 'Generate parking tickets and receipts instantly upon entry or booking',
       },
       {
         icon: <AiOutlineSync size={32} color="#FFB940" />,
-        title: 'Real-time case updates',
-        desc: 'Keep all parties informed with automatic notifications of case status changes',
+        title: 'Real-time occupancy updates',
+        desc: 'Keep users and staff informed with live updates on slot availability and usage',
       },
     ],
   },
   {
-    label: 'Hearings',
+    label: 'Monitoring',
     image: shippingImg,
-    title: 'Efficient & organized hearing management',
-    desc: 'Experience streamlined hearing scheduling with our comprehensive solutions',
+    title: 'Smart surveillance and parking enforcement',
+    desc: 'Ensure secure and compliant parking with integrated monitoring tools.',
     pointers: [
       {
         icon: <AiOutlineDollarCircle size={32} color="#FFB940" />,
-        title: 'Digital hearing rooms',
-        desc: 'Conduct virtual hearings with integrated video conferencing and digital evidence presentation',
+        title: 'License plate recognition',
+        desc: 'Use ANPR technology to track vehicle entry, exit, and violations automatically',
       },
       {
         icon: <MdOutlineReplay size={32} color="#FFB940" />,
-        title: 'Flexible rescheduling',
-        desc: 'Handle hearing postponements and rescheduling with automated calendar management',
+        title: 'Violation alerts',
+        desc: 'Detect overstays, unauthorized parking, and send instant alerts to enforcement teams',
       },
       {
         icon: <AiOutlineThunderbolt size={32} color="#FFB940" />,
-        title: 'Quick hearing summaries',
-        desc: 'Generate detailed hearing reports and minutes automatically for accurate record-keeping',
+        title: 'Incident reporting',
+        desc: 'Log and manage parking-related incidents with automated reporting tools',
       },
     ],
   },
   {
     label: 'Analytics',
     image: reconciliationImg,
-    title: 'Comprehensive legal analytics and reporting',
-    desc: 'Keep your court operations data-driven with detailed analytics and insights',
+    title: 'Data-driven parking insights and reporting',
+    desc: 'Optimize your parking operations with actionable analytics.',
     pointers: [
       {
         icon: <MdOutlineScale size={32} color="#FFB940" />,
-        title: 'Case outcome analysis',
-        desc: 'Track case resolutions, judgments, and legal precedents for informed decision-making',
+        title: 'Usage trends',
+        desc: 'Analyze peak hours, occupancy rates, and user behavior to improve planning',
       },
       {
         icon: <FaHandHoldingUsd size={32} color="#FFB940" />,
-        title: 'Court efficiency metrics',
-        desc: 'Monitor court performance, hearing backlogs, and processing times for optimization',
+        title: 'Revenue tracking',
+        desc: 'Monitor earnings from parking fees, subscriptions, and penalties in real-time',
       },
       {
         icon: <MdOutlineGavel size={32} color="#FFB940" />,
-        title: 'Legal compliance tracking',
-        desc: 'Ensure adherence to legal procedures and deadlines with automated compliance monitoring',
+        title: 'Compliance metrics',
+        desc: 'Track adherence to parking regulations and enforcement efficiency',
       },
     ],
   },
@@ -116,10 +116,10 @@ const FeaturesSection = () => {
   return (
     <section className="features-section">
       <div className="features-section-title">
-        Transforming Legal{' '}
-        <span className="features-section-highlight">Justice</span>
+        Transforming Parking{' '}
+        <span className="features-section-highlight">Management</span>
         {' '}for{' '}
-        <span className="features-section-strong">Digital Excellence</span>
+        <span className="features-section-strong">Next Gen-Vehicles</span>
       </div>
       <div className="features-tabs">
         {featuresTabs.map((t, i) => (

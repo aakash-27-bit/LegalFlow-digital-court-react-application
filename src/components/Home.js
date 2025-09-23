@@ -8,13 +8,12 @@ import FeaturesSection from "./sections/FeaturesSection";
 import StatsSection from "./sections/StatsSection";
 import StepsSection from "./sections/StepsSection";
 import FinalCTASection from "./sections/FinalCTASection";
-import Footer from "./Footer";
 
 const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="home-container" style={{ paddingTop: 64 }}>
+      <div className="home-container" style={{ paddingTop: 64, paddingBottom: 80 }}>
         <div className="home-section hero-section-wrapper">
           <HeroSection />
         </div>
@@ -42,7 +41,6 @@ const Home = () => {
         <div className="home-section final-cta-section-wrapper mb-24 ">
           <FinalCTASection />
         </div>
-        <Footer />
       </div>
     </>
   );
