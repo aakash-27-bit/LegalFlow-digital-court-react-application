@@ -87,7 +87,7 @@
 
 .journey-section-wrapper {
   border-left: 5px solid #f8b217;
-  padding: 40px 0px;
+  padding: 75px 0px;
   min-width: 100%;
   border-radius: 0px;
   background-image: url('../assets/front/images/bgbanner.png');
@@ -140,7 +140,7 @@
 
 
 .stats-section-wrapper {
-  background: linear-gradient(135deg, rgba(248, 178, 23, 0.05), rgba(255, 255, 255, 0.95));
+  background: linear-gradient(135deg, rgba(248, 216, 147, 0.05), rgba(255, 255, 255, 0.95));
   margin: 50px auto;
   margin-bottom: 80px;
   margin-top: 80px;

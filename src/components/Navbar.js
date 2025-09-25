@@ -44,7 +44,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src={logo} alt="LegalFlow Logo" className="navbar-logo-img" />
+        <img src={logo} alt="App Logo" className="navbar-logo-img" />
 
       </div>
       <ul className="navbar-menu">

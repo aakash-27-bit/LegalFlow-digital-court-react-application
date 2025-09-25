@@ -24,4 +24,4 @@ Thank you for your interest in contributing! Please follow these guidelines to h
 - Be respectful and constructive in all communications.
 - See the CODE_OF_CONDUCT.md for more details.
 
-Thank you for helping us improve LegalFlow!
+Thank you for helping us improve HighWheels!

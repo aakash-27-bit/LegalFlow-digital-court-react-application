@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSpring, animated } from '@react-spring/web';
 import { Container, Grid, Typography, Box } from "@mui/material";
-import lawImg from "../../assets/law.jpg";
-import flatSystemImg from "../../assets/flat-system.jpg";
-import sentenceImg from "../../assets/sentence.jpg";
+import image_carDB from "../../assets/revamp/image_cardb.jpg";
+import parkingApp from "../../assets/revamp/app_bsd_parking.jpg";
+import vendingMachineParking from "../../assets/revamp/vending-machine-parking.jpg";
 import "../Home.styles.css";
 import "./JourneySection.styles.css";
 // Card data for easy switching
@@ -20,7 +20,7 @@ const cards = [
           <span className="journey-step-desc">User Account Management:  <span className="journey-step-highlight"> Offer account registration, vehicle management, booking history, and notifications for users.</span></span>
         </div>
       </div>),
-    img: sentenceImg,
+    img: image_carDB,
     alt: "Legal System",
     highlight: true,
   },
@@ -40,7 +40,7 @@ const cards = [
         </div>
       </div>
     ),
-    img: flatSystemImg,
+    img: parkingApp,
     alt: "System Management",
     highlight: true,
   },
@@ -60,7 +60,7 @@ const cards = [
         </div>
       </div>
     ),
-    img: lawImg,
+    img: vendingMachineParking,
     alt: "Legal Process",
     highlight: true,
   },
@@ -153,11 +153,13 @@ const JourneySection = () => {
                 key={activeIndex}
                 src={cards[activeIndex].img}
                 alt={cards[activeIndex].alt}
+                borderRadius={12}
                 style={{
                   ...imageSpring,
                   width: "100%",
-                  maxHeight: "420px",
-                  maxWidth: "420px",
+                  minWidth: "580px",
+                  maxHeight: "520px",
+                  maxWidth: "680px",
                   height: "100%",
                   objectFit: "cover",
                   borderRadius: 20,

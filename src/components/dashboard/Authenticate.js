@@ -145,7 +145,7 @@ const Authenticate = () => {
       <ErrorModal error={error} onClear={clearError} />
       <form className={`auth-card${!isLogin ? ' signup-mode' : ''}`} onSubmit={handleSubmit} autoComplete="off">
         <div className="auth-title">
-          {isLogin ? 'Hi, Welcome Back' : 'Get Started with LegalFlow'}
+          {isLogin ? 'Hi, Welcome Back' : 'Get Started with HighWheels'}
         </div>
         <div className="auth-subtitle">
           {isLogin

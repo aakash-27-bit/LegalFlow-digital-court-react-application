@@ -9,17 +9,17 @@ const steps = [
   {
     img: step1Img,
     title: "STEP 01",
-    desc: "Register your court and complete digital verification",
+    desc: "Find Available spots, Raise Tickets & Book instantly",
   },
   {
     img: step2Img,
     title: "STEP 02",
-    desc: "Import existing cases and configure judicial workflows",
+    desc: "Cashless payments & automated entry/exit",
   },
   {
     img: step3Img,
     title: "STEP 03",
-    desc: "Begin digital case management and virtual hearings",
+    desc: "Manage Parking, passes and Wallets on the go",
   },
 ];
 
@@ -41,12 +41,12 @@ const StepsSection = () => {
             lineHeight: 1.3,
           }}
         >
-          Modernize your{" "}
+          Simplify your{" "}
           <Box
             component="span"
             sx={{ color: "#f8b217", fontWeight: 700, fontStyle: "italic" }}
           >
-            courthouse
+            Parking Troubles
           </Box>{" "}
           in just{" "}
           <Box component="span" sx={{ fontWeight: 600 }}>
@@ -107,7 +107,8 @@ const StepsSection = () => {
                 sx={{
                   color: "#666",
                   fontFamily: "serif",
-                  fontSize: "1rem",
+                  fontSize: "1.4rem",
+                  fontWeight: 600,
                 }}
               >
                 {step.desc}
