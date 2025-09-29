@@ -4,18 +4,15 @@ import Sidebar from "./shared/Navigation/Sidebar";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Payments from "./components/NewCase/Payments";
 import Settings from "./components/Settings";
-import Dashboard from "./components/OldConcept/Dashboard";
+import Dashboard from "./components/LandingPages/Homepage";
 import NotificationsProvider from "./components/NotificationsProvider";
 import Home from "./components/Home";
 import ContactUsForm from "./components/ContactUsForm";
 import "./App.css";
-// import NewCases from "./court/components/NewCase/NewCases";
 import Authenticate from "./components/AuthPage/Authenticate";
 import VehicleMonitoring from "./components/parking/VehicleMonitoring";
 import TicketManagement from "./components/parking/TicketManagement";
 import DriverDetails from "./components/parking/DriverDetails";
-import AdminDashboard from "./components/DashboardAdminView/AdminDashboard";
-
 const App = () => {
   const isloggedIn = true;
   useEffect(() => {

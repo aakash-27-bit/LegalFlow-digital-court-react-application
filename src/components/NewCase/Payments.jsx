@@ -1,12 +1,12 @@
 import { React, useState } from "react";
-import Input from "../../../shared/formElements/Input";
-import Button from "../../../shared/formElements/Button";
-import { useForm } from "../../../shared/hooks/form-hook";
-import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../../shared/util/validators";
-import { handleKeyPress } from "../../../shared/util/generalFunc";
-import bank from "../../../assets/bank.svg";
-import { paymentCards } from "../../../constants/constants";
-import { paymentMethods } from "../../../constants/constants";
+import Input from "../../shared/formElements/Input";
+import Button from "../../shared/formElements/Button";
+import { useForm } from "../../shared/hooks/form-hook";
+import { VALIDATOR_REQUIRE, VALIDATOR_MINLENGTH } from "../../shared/util/validators";
+import { handleKeyPress } from "../../shared/util/generalFunc";
+import bank from "../../assets/bank.svg";
+import { paymentCards } from "../../config/constants";
+import { paymentMethods } from "../../config/constants";
 
 const Payments = () => {
 

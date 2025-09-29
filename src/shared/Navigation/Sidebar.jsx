@@ -1,4 +1,4 @@
-import { userSideBar, adminSideBar, ROLES } from "../../constants/constants";
+import { userSideBar, adminSideBar, ROLES } from "../../config/constants";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
