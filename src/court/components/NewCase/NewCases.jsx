@@ -43,7 +43,6 @@ export default function NewCases() {
         }
     }, false
     )
-
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     //const history = useNavigate();

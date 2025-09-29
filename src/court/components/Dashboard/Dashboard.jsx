@@ -42,7 +42,7 @@ const Dashboard = () => {
     }
     return (
         <>
-            {role === ROLES.USER ? (
+            {role === ROLES.ADMIN ? (
                 <div className="bg-gray-200 h-screen overflow-y-scroll flex flex-row">
                     <div id="ovw-hrn" className="flex flex-col gap-2 mt-4">
                         <Overview data={data} />
@@ -52,16 +52,14 @@ const Dashboard = () => {
                         <Button
                             className="bg-red-800 rounded-md text-white text-xl font-bold shadow-nav py-6 px-2 mt-8 mb-2 mr-4"
                             handler={() => history("/new-case")}
-                        >New Application
+                        >
+                            New Application
                         </Button>
                         <LawyersSection data={lawyersData} />
                     </div>
                 </div>
             ) : (
-                <AdminDashboard
-                    data={data}
-                    refetch={refetch}
-                />
+                    <AdminDashboard />
             )}
         </>
     );

@@ -56,8 +56,7 @@ export const addCalendarEvent = (startTime, address, clientName) => {
                 }).then(response => {
                     const events = response.result.items
                     console.log('EVENTS: ', events)
-                })
-                //end of event listing
+                });
 
                 let request = gapi.client.calendar.events.insert({
                     'calendarId': 'primary',
