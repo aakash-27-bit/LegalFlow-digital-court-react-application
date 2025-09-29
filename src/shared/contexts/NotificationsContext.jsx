@@ -34,11 +34,7 @@ export const NotificationsProvider = ({ children }) => {
         setUnreadCount(0);
     };
 
-    useEffect(() => {
-        fetchNotifications();
-        // eslint-disable-next-line react-hooks/exhaustive-deps 
-    }, []);
-
+    useEffect(() => fetchNotifications());
     return (
         <NotificationsContext.Provider value={{ notifications, unreadCount, markAsRead, fetchNotifications }}>
             {children}
