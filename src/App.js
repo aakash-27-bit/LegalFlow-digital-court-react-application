@@ -2,9 +2,9 @@ import React, { Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Sidebar from "./shared/Navigation/Sidebar";
 import LoadingSpinner from "./components/LoadingSpinner";
-import Payments from "./court/components/NewCase/Payments";
-import Settings from "./court/components/Settings";
-import Dashboard from "./court/components/Dashboard/Dashboard";
+import Payments from "./components/NewCase/Payments";
+import Settings from "./components/Settings";
+import Dashboard from "./components/OldConcept/Dashboard";
 import NotificationsProvider from "./components/NotificationsProvider";
 import Home from "./components/Home";
 import ContactUsForm from "./components/ContactUsForm";
@@ -14,7 +14,7 @@ import Authenticate from "./components/AuthPage/Authenticate";
 import VehicleMonitoring from "./components/parking/VehicleMonitoring";
 import TicketManagement from "./components/parking/TicketManagement";
 import DriverDetails from "./components/parking/DriverDetails";
-import AdminDashboard from "./court/components/AdminDB/AdminDashboard";
+import AdminDashboard from "./components/DashboardAdminView/AdminDashboard";
 
 const App = () => {
   const isloggedIn = true;

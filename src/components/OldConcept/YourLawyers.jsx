@@ -1,6 +1,6 @@
 import { lawyersData } from "../../../constants/constants";
 import { CiCircleChevRight } from "react-icons/ci";
-import LawyerDetailsModal from "../../../shared/modals/LawyerDetailsModal";
+import LawyerDetailsModal from "../../shared/modals/LawyerDetailsModal";
 import { useState } from "react";
 
 const LawyersSection = () => {

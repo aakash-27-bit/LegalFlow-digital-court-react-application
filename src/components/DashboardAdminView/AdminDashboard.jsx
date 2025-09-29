@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ParkingZoneMap from '../../../components/parking/ParkingZoneMap';
+import ParkingZoneMap from '../parking/ParkingZoneMap';
 import { Dialog } from '@headlessui/react';
 
 const AdminDashboard = () => {

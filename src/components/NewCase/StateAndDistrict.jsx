@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { getAllStates, getDistrictsByState } from "../../../api/E-Court/locationAPI";
-import { validate } from "../../../shared/util/validators";
-import Dropdown from "../../../shared/formElements/Dropdown";
+import { getAllStates, getDistrictsByState } from "../../api/E-Court/locationAPI";
+import { validate } from "../../shared/util/validators";
+import Dropdown from "../../shared/formElements/Dropdown";
 
 const StateAndDistrict = ({ inputHandler, formState, validators }) => {
 

@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useForm } from "../../shared/hooks/form-hook";
+import { useForm } from "../shared/hooks/form-hook";
 import { useSelector } from "react-redux";
-import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../../shared/util/validators";
-import Input from "../../shared/formElements/Input";
-import Button from "../../shared/formElements/Button";
-import LoadingSpinner from "../../shared/UIelements/LoadingSpinner";
-import ErrorModal from "../../shared/modals/ErrorModal";
-import VerifyOtpModal from "../../shared/modals/VerifyOtpModal";
+import { VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE } from "../shared/util/validators";
+import Input from "../shared/formElements/Input";
+import Button from "../shared/formElements/Button";
+import LoadingSpinner from "../shared/UIelements/LoadingSpinner";
+import ErrorModal from "../shared/modals/ErrorModal";
+import VerifyOtpModal from "../shared/modals/VerifyOtpModal";
 import axios from "axios";
 
 const Settings = () => {

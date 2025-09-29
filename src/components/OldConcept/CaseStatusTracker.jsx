@@ -1,8 +1,8 @@
-import { toTitleCase } from "../../../shared/util/generalFunc";
+import { toTitleCase } from "../../shared/util/generalFunc";
 import { CiCircleChevRight } from "react-icons/ci";
 import { useState } from "react";
-import CaseDetailsModal from "../../../shared/modals/CaseDetailsModal";
-import { convertToMaskedFormat } from "../../../shared/util/generalFunc";
+import CaseDetailsModal from "../../shared/modals/CaseDetailsModal";
+import { convertToMaskedFormat } from "../../shared/util/generalFunc";
 
 const CaseStatusTracker = ({ data }) => {
     const [openDetails, setOpenDetails] = useState(false);

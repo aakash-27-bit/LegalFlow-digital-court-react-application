@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { STATUS } from "../../../constants/constants";
-import useGetAllCases from "../../../api/useGetAllCases";
-import ErrorModal from "../../../shared/modals/ErrorModal";
-import { toTitleCase } from "../../../shared/util/generalFunc";
-import EditCaseDetailsModal from "../../../shared/modals/EditCaseDetails";
-import LoadingSpinner from "../../../shared/UIelements/LoadingSpinner";
+import useGetAllCases from "../../api/useGetAllCases";
+import ErrorModal from "../../shared/modals/ErrorModal";
+import { toTitleCase } from "../../shared/util/generalFunc";
+import EditCaseDetailsModal from "../../shared/modals/EditCaseDetails";
+import LoadingSpinner from "../../shared/UIelements/LoadingSpinner";
 import { FiEdit3 } from "react-icons/fi";
 
 const UpdateHearings = () => {

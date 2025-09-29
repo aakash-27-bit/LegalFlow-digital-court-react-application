@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
-import CaseApplicationsModal from "../../../shared/modals/CaseApplicationsModal";
+import CaseApplicationsModal from "../../shared/modals/CaseApplicationsModal";
 
 const NewApplications = ({ refetch, data }) => {
     const [openDetails, setOpenDetails] = useState(false);
