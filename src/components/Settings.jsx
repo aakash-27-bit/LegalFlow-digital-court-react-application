@@ -7,6 +7,7 @@ import Button from "../shared/formElements/Button";
 import LoadingSpinner from "../shared/UIelements/LoadingSpinner";
 import ErrorModal from "../shared/modals/ErrorModal";
 import VerifyOtpModal from "../shared/modals/VerifyOtpModal";
+import ThemeToggle from "../shared/UIelements/ThemeToggle";
 import axios from "axios";
 
 const Settings = () => {
@@ -30,8 +31,18 @@ const Settings = () => {
         false
     );
 
-
     const clearError = () => setError(null);
+
+    // Render the theme toggle section
+    const renderThemeToggle = () => (
+        <div className="mb-6 p-4 bg-theme-accent rounded-lg shadow-theme">
+            <h3 className="text-lg font-semibold mb-4">Appearance Settings</h3>
+            <div className="flex items-center justify-between">
+                <span className="text-sm">Choose your preferred theme</span>
+                <ThemeToggle />
+            </div>
+        </div>
+    );
     //for reset password api call
     const submitHandler = async (event) => {
         event.preventDefault();
@@ -108,6 +119,10 @@ const Settings = () => {
                 {
                     emailVerified ? (
                         <div className="flex flex-col gap-4 pt-2">
+                            {/* Theme Toggle Section */}
+                            {renderThemeToggle()}
+
+                            {/* Password Section */}
                             <div className="flex flex-col gap-2">
                                 <p className="text-md font-circular text-gray-800">New Password</p>
                                 <input
@@ -130,7 +145,6 @@ const Settings = () => {
                                     className="w-full h-14 px-2 border-2 border-gray-200 rounded-md"
                                 />
                             </div>
-
                         </div>
                     ) : (
                         <>

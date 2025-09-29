@@ -1,5 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { ThemeProvider } from "./shared/contexts/ThemeContext";
 import Sidebar from "./shared/Navigation/Sidebar";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Payments from "./components/NewCase/Payments";
@@ -84,22 +85,24 @@ const App = () => {
 
   return (
     <Router>
-      <NotificationsProvider>
-        <main className="flex h-screen ">
-          {isloggedIn && <Sidebar />}
-          <div className="flex-1 flex flex-col">
-            <Suspense
-              fallback={
-                <div className="center">
-                  <LoadingSpinner asOverlay />
-                </div>
-              }
-            >
-              {routes}
-            </Suspense>
-          </div>
-        </main>
-      </NotificationsProvider>
+      <ThemeProvider>
+        <NotificationsProvider>
+          <main className="flex h-screen">
+            {isloggedIn && <Sidebar />}
+            <div className="flex-1 flex flex-col">
+              <Suspense
+                fallback={
+                  <div className="center">
+                    <LoadingSpinner asOverlay />
+                  </div>
+                }
+              >
+                {routes}
+              </Suspense>
+            </div>
+          </main>
+        </NotificationsProvider>
+      </ThemeProvider>
     </Router>
   );
 };
