@@ -17,7 +17,7 @@ const Sidebar = () => {
     if (role === ROLES.ADMIN) options = adminSideBar;
     return (
         <div className="sticky left-0 top-0 z-10 h-[100vh] w-56 bg-[#213555] shadow-lg flex flex-col overflow-none">
-            <div className=" flex items-center">
+            <div className="flex items-center">
                 <img src={logoImage} alt="Logo" className="h-24 w-full" />
             </div>
             <ul className="mt-6 space-y-2 text-white">

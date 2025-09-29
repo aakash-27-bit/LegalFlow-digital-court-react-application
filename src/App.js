@@ -1,6 +1,6 @@
 import React, { Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { ThemeProvider } from "./shared/contexts/ThemeContext";
+import { useTheme } from "./shared/contexts/ThemeContext.new";
 import Sidebar from "./shared/Navigation/Sidebar";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Payments from "./components/NewCase/Payments";
@@ -16,6 +16,7 @@ import TicketManagement from "./components/parking/TicketManagement";
 import DriverDetails from "./components/parking/DriverDetails";
 const App = () => {
   const isloggedIn = true;
+  const { isDarkMode } = useTheme();
   useEffect(() => {
     if (isloggedIn) {
       const currentPath = window.location.pathname;
@@ -84,8 +85,9 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <ThemeProvider>
+
+    <div className={`min-h-screen transition-colors duration-200 ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
+      <Router>
         <NotificationsProvider>
           <main className="flex h-screen">
             {isloggedIn && <Sidebar />}
@@ -102,8 +104,8 @@ const App = () => {
             </div>
           </main>
         </NotificationsProvider>
-      </ThemeProvider>
-    </Router>
+      </Router>
+    </div>
   );
 };
 

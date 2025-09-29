@@ -1,18 +1,34 @@
-import React, { useState } from 'react';
-import ParkingZoneMap from '../parking/ParkingZoneMap';
+import React, { useState, useMemo } from 'react';
+import ParkingZoneMap from '../parking/ParkingZoneMap/ParkingZoneMap';
 import { Dialog } from '@headlessui/react';
+import { All_SPOTS_DATA } from '../../constants/PMS_CONSTANTS/ParkingSpots';
 
 const AdminDashboard = () => {
     const [selectedFloor, setSelectedFloor] = useState(1);
     const [selectedSpot, setSelectedSpot] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Example zone risk levels based on occupancy or other metrics
-    const zoneRiskData = {
-        "ZoneA": "#ef4444", // High risk - red
-        "ZoneB": "#eab308", // Medium risk - yellow
-        "ZoneC": "#22c55e"  // Low risk - green
-    };
+    // Transform the floor data into the format expected by ParkingZoneMap
+    const floorData = useMemo(() => {
+        const currentFloor = All_SPOTS_DATA.floors.find(f => f.floor === selectedFloor);
+        if (!currentFloor) return [];
+
+        return currentFloor.spots.map(spot => ({
+            id: spot.spotNumber,
+            slotNumber: spot.spotNumber,
+            zone: spot.zone,
+            status: spot.driverId ? 'OCCUPIED' : 'AVAILABLE',
+            rate: 55,
+            features: [
+                ...(spot.isEV ? ['EV Charging'] : []),
+                'CCTV Monitoring',
+                'Covered Parking'
+            ],
+            isReserved: spot.isReserved,
+            driverId: spot.driverId,
+            lastUpdated: '1 min ago'
+        }));
+    }, [selectedFloor]);
 
     const handleSpotClick = (spotData) => {
         setSelectedSpot(spotData);
@@ -40,60 +56,13 @@ const AdminDashboard = () => {
             </div>
 
             {/* Parking Zone Map */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="bg-white max-h-[80vh] overflow-hidden rounded-lg shadow-lg p-6">
                 <ParkingZoneMap
-                    selectedFloor={selectedFloor}
-                    zoneRiskData={zoneRiskData}
-                    onSpotClick={handleSpotClick}
+                    slots={floorData}
+                    onSlotClick={handleSpotClick}
+                    isLoading={false}
                 />
             </div>
-
-            {/* Spot Details Modal */}
-            <Dialog
-                open={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                className="relative z-50"
-            >
-                <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-
-                <div className="fixed inset-0 flex items-center justify-center p-4">
-                    <Dialog.Panel className="mx-auto max-w-sm rounded bg-white p-6">
-                        <Dialog.Title className="text-lg font-medium mb-4">
-                            Spot Details: {selectedSpot?.spotNumber}
-                        </Dialog.Title>
-
-                        {selectedSpot && (
-                            <div className="space-y-3">
-                                <p><span className="font-medium">Zone:</span> {selectedSpot.zone}</p>
-                                <p><span className="font-medium">Status:</span> {
-                                    selectedSpot.driverId ? 'Occupied' : 'Available'
-                                }</p>
-                                {selectedSpot.isReserved && (
-                                    <p><span className="font-medium">Reserved:</span> Yes</p>
-                                )}
-                                {selectedSpot.isEV && (
-                                    <p><span className="font-medium">EV Charging:</span> Available</p>
-                                )}
-                                {selectedSpot.driverId && (
-                                    <p><span className="font-medium">Driver ID:</span> {selectedSpot.driverId}</p>
-                                )}
-                                {selectedSpot.vehicleId && (
-                                    <p><span className="font-medium">Vehicle ID:</span> {selectedSpot.vehicleId}</p>
-                                )}
-                            </div>
-                        )}
-
-                        <div className="mt-6 flex justify-end">
-                            <button
-                                className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300"
-                                onClick={() => setIsModalOpen(false)}
-                            >
-                                Close
-                            </button>
-                        </div>
-                    </Dialog.Panel>
-                </div>
-            </Dialog>
         </div>
     );
 };

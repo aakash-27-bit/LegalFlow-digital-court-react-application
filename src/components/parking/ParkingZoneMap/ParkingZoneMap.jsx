@@ -1,7 +1,8 @@
-import React, { useRef, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { useTheme } from '../../../shared/contexts/ThemeContext.new';
 import * as d3 from 'd3';
 import styles from './styles/ParkingZoneMap.css';
-import ParkingSlotCell from './components/ParkingSlotCell';
+import ParkingSlotCell from './ParkingSlotCell';
 import ParkingLegend from './components/ParkingLegend';
 import ParkingTooltip from './components/ParkingTooltip';
 import ZoomControls from './components/ZoomControls';
@@ -10,20 +11,46 @@ const ZOOM_EXTENT = [1, 3];
 const TRANSITION_DURATION = 300;
 
 const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
+  console.log('ParkingZoneMap slots:', slots); // Debug log
   const svgRef = useRef(null);
+  const { isDarkMode } = useTheme();
+
+  // Calculate grid layout
+  const SLOT_WIDTH = 100;
+  const SLOT_HEIGHT = 100;
+  const SLOT_MARGIN = 10;
+  const SLOTS_PER_ROW = Math.floor(800 / (SLOT_WIDTH + SLOT_MARGIN));
+
+  // Position calculation function
+  const calculatePosition = (index) => {
+    const row = Math.floor(index / SLOTS_PER_ROW);
+    const col = index % SLOTS_PER_ROW;
+    return {
+      x: col * (SLOT_WIDTH + SLOT_MARGIN),
+      y: row * (SLOT_HEIGHT + SLOT_MARGIN)
+    };
+  };
+
+  const themeColors = {
+    available: isDarkMode ? '#4B5563' : '#9ECAD6',
+    occupied: isDarkMode ? '#4A5568' : '#FFEAEA',
+    text: isDarkMode ? '#E5E7EB' : '#748DAE',
+    background: isDarkMode ? '#1F2937' : '#FFFFFF'
+  };
   const [activeSlot, setActiveSlot] = useState(null);
   const [tooltipContent, setTooltipContent] = useState(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [transform, setTransform] = useState(d3.zoomIdentity);
 
   const legendItems = [
-    { label: 'Available', color: '#9ECAD6' },
-    { label: 'Occupied', color: '#FFEAEA' },
+    { label: 'Available', color: themeColors.available },
+    { label: 'Occupied', color: themeColors.occupied },
   ];
 
   const handleZoom = useCallback((event) => {
     setTransform(event.transform);
   }, []);
+
 
   const initializeZoom = useCallback(() => {
     const svg = d3.select(svgRef.current);
@@ -34,6 +61,10 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
     svg.call(zoom);
     return zoom;
   }, [handleZoom]);
+
+  useEffect(() => {
+    initializeZoom();
+  }, [initializeZoom]);
 
   const handleZoomIn = useCallback(() => {
     const zoom = initializeZoom();
@@ -81,27 +112,27 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
 
   return (
     <div className={styles['map-container']}>
-      <svg
-        ref={svgRef}
-        className={styles['map-svg']}
-        viewBox="0 0 800 600"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <g transform={transform}>
-          {slots.map((slot) => (
-            <ParkingSlotCell
-              key={slot.id}
-              slotData={slot}
-              onClick={handleSlotClick}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              isActive={slot.id === activeSlot?.id}
-            />
-          ))}
-        </g>
-      </svg>
+      <div className="relative w-full h-full min-h-[600px] overflow-auto">
+        <div className="absolute inset-0 grid grid-cols-4 gap-4 p-4">
+          {slots.map((slot, index) => {
+            // Debug log for each slot
+            console.log('Rendering slot:', slot);
+            return (
+              <div key={slot.id} className="transform-gpu">
+                <ParkingSlotCell
+                  slotData={slot}
+                  onClick={handleSlotClick}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                  isActive={slot.id === activeSlot?.id}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
-      <ParkingLegend legendItems={legendItems} />
+      {/* <ParkingLegend legendItems={legendItems} />
       <ZoomControls
         onZoomIn={handleZoomIn}
         onZoomOut={handleZoomOut}
@@ -110,7 +141,7 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
       <ParkingTooltip
         content={tooltipContent}
         position={tooltipPosition}
-      />
+      /> */}
 
       {isLoading && (
         <div className={styles['loading-overlay']}>
