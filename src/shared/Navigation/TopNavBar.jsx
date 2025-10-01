@@ -8,7 +8,7 @@ const TopNavBar = () => {
   const { topNavConfig } = useTopNav();
   return (
     <div className="bg-white border-b">
-      <div className="px-6 py-4">
+      <div className="top nav bar">
         <div className="flex justify-between items-center">
           {/* Left side - Title and Description */}
           <div>

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ContactHero = () => {
     return (
-        <section className="hero-section" style={{ height: "40vh", margin: "0px auto", alignItems: "center" }}>
+        <section className="hero-section" style={{ height: "25vh", margin: "0px auto", alignItems: "center" }}>
             <Container>
                 <Grid container spacing={4} justifyContent="center" alignContent='center' textAlign={"center"}>
                     <Typography
@@ -14,7 +14,7 @@ const ContactHero = () => {
                         marginTop={4}
                         sx={{ fontWeight: 900, letterSpacing: '-1px', lineHeight: 1.1 }}
                     >
-                        Get Started With Case Management with CCMS
+                        Get Started with HighWheels Parking Management System
                     </Typography>
                 </Grid>
             </Container>

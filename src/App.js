@@ -16,16 +16,15 @@ import Authenticate from "./components/AuthPage/Authenticate";
 import VehicleMonitoring from "./components/parking/VehicleMonitoring";
 import TicketManagement from "./components/parking/TicketManagement";
 import DriverDetails from "./components/parking/DriverDetails";
+
 const App = () => {
   const isloggedIn = true;
   const { isDarkMode } = useTheme();
   useEffect(() => {
-    if (isloggedIn) {
+    if (!isloggedIn) {
       const currentPath = window.location.pathname;
       // If user is on /auth or /, redirect to /dashboard
-      if (currentPath === '/auth' || currentPath === '/') {
-        window.history.replaceState({}, '', '/dashboard');
-      }
+      if (currentPath === '/auth' || currentPath === '/') window.history.replaceState({}, '', '/dashboard');
     }
     else if (!localStorage.getItem('Access-token')) {
       const currentPath = window.location.pathname;
