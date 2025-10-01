@@ -11,7 +11,7 @@ const ZOOM_EXTENT = [1, 3];
 const TRANSITION_DURATION = 300;
 
 const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
-  console.log('ParkingZoneMap slots:', slots); // Debug log
+  //console.log('ParkingZoneMap slots:', slots); // Debug log
   const svgRef = useRef(null);
   const { isDarkMode } = useTheme();
 
@@ -41,7 +41,6 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
   const [tooltipContent, setTooltipContent] = useState(null);
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const [transform, setTransform] = useState(d3.zoomIdentity);
-
   const legendItems = [
     { label: 'Available', color: themeColors.available },
     { label: 'Occupied', color: themeColors.occupied },
@@ -66,29 +65,29 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
     initializeZoom();
   }, [initializeZoom]);
 
-  const handleZoomIn = useCallback(() => {
-    const zoom = initializeZoom();
-    const svg = d3.select(svgRef.current);
-    svg.transition()
-      .duration(TRANSITION_DURATION)
-      .call(zoom.scaleBy, 1.2);
-  }, [initializeZoom]);
+  // const handleZoomIn = useCallback(() => {
+  //   const zoom = initializeZoom();
+  //   const svg = d3.select(svgRef.current);
+  //   svg.transition()
+  //     .duration(TRANSITION_DURATION)
+  //     .call(zoom.scaleBy, 1.2);
+  // }, [initializeZoom]);
 
-  const handleZoomOut = useCallback(() => {
-    const zoom = initializeZoom();
-    const svg = d3.select(svgRef.current);
-    svg.transition()
-      .duration(TRANSITION_DURATION)
-      .call(zoom.scaleBy, 0.8);
-  }, [initializeZoom]);
+  // const handleZoomOut = useCallback(() => {
+  //   const zoom = initializeZoom();
+  //   const svg = d3.select(svgRef.current);
+  //   svg.transition()
+  //     .duration(TRANSITION_DURATION)
+  //     .call(zoom.scaleBy, 0.8);
+  // }, [initializeZoom]);
 
-  const handleZoomReset = useCallback(() => {
-    const zoom = initializeZoom();
-    const svg = d3.select(svgRef.current);
-    svg.transition()
-      .duration(TRANSITION_DURATION)
-      .call(zoom.transform, d3.zoomIdentity);
-  }, [initializeZoom]);
+  // const handleZoomReset = useCallback(() => {
+  //   const zoom = initializeZoom();
+  //   const svg = d3.select(svgRef.current);
+  //   svg.transition()
+  //     .duration(TRANSITION_DURATION)
+  //     .call(zoom.transform, d3.zoomIdentity);
+  // }, [initializeZoom]);
 
   const handleSlotClick = useCallback((slot) => {
     setActiveSlot(slot.id === activeSlot?.id ? null : slot);
@@ -116,7 +115,6 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
         <div className="absolute inset-0 grid grid-cols-4 gap-4 p-4">
           {slots.map((slot, index) => {
             // Debug log for each slot
-            console.log('Rendering slot:', slot);
             return (
               <div key={slot.id} className="transform-gpu">
                 <ParkingSlotCell

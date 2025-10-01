@@ -15,8 +15,16 @@ const Sidebar = () => {
     const role = useSelector((state) => state.userAccount.role);
     const user = useSelector((state) => state.userAccount);
     if (role === ROLES.ADMIN) options = adminSideBar;
+
+    const isActiveRoute = (itemUrl) => {
+        // Check if current path starts with the menu item's URL
+        // This handles both exact matches and nested routes
+        return location.pathname.startsWith(itemUrl) ||
+            // Special case for home/dashboard
+            (itemUrl === '/dashboard' && location.pathname === '/');
+    };
     return (
-        <div className="sticky left-0 top-0 z-10 h-[100vh] w-56 bg-[#213555] shadow-lg flex flex-col overflow-none">
+        <div className="sticky left-0 top-0 z-10 h-[100vh] !w-80 bg-[#213555] shadow-lg flex flex-col overflow-none">
             <div className="flex items-center">
                 <img src={logoImage} alt="Logo" className="h-24 w-full" />
             </div>
@@ -43,8 +51,7 @@ const Sidebar = () => {
                     return (
                         <li
                             key={index}
-                            className={`${location.pathname === item.url && 'bg-[#3b5e97]'} cursor-pointer pl-4 p-3 transition ease-in-out duration-150 text-gray-200 
-                            hover:text-white hover:bg-[#3b5e97]`}
+                            className={`${isActiveRoute(item.url) ? 'bg-[#3b5e97] text-white' : 'text-gray-200'}cursor-pointer pl-4 p-3 transition ease-in-out duration-150 hover:text-white hover:bg-[#3b5e97]`}
                         >
                             <Link to={item.url} className="flex items-center space-x-3">
                                 <Icon className="text-lg" />
@@ -52,8 +59,7 @@ const Sidebar = () => {
                             </Link>
                         </li>
                     )
-                })
-                }
+                })}
             </ul>
 
             {/* Profile and Notifications Section */}

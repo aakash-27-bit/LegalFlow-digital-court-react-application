@@ -33,13 +33,13 @@ export const userSideBar = [
     },
     {
         icon: AiOutlineFileAdd,
-        title: 'New Case',
-        url: '/new-case',
+        title: 'New Slot Registration',
+        url: '/new-registration',
         type: 'redirection',
     },
     {
         icon: BsWallet,
-        title: 'Transactions',
+        title: 'Wallet Topup',
         url: '/payments',
         type: 'redirection',
     },

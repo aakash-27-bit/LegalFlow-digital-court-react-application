@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="home-container" style={{ paddingTop: 64, paddingBottom: 80 }}>
+      <div className="home-container">
         <div className="home-section hero-section-wrapper">
           <HeroSection />
         </div>

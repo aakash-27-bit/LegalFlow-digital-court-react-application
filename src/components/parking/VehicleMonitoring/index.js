@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import VehicleList from './VehicleList';
+import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
 
 const VehicleMonitoring = () => {
   const [filterStatus, setFilterStatus] = useState('all');
 
   return (
     <div className="p-6">
+      <NavigationHeader currentStep="Vehicle Monitoring" />
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold">Vehicle Monitoring</h1>
         <div className="flex gap-4">

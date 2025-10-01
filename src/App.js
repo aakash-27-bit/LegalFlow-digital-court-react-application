@@ -2,6 +2,8 @@ import React, { Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useTheme } from "./shared/contexts/ThemeContext.new";
 import Sidebar from "./shared/Navigation/Sidebar";
+import TopNavBar from "./shared/Navigation/TopNavBar";
+import { TopNavProvider } from "./shared/contexts/TopNavContext";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Payments from "./components/NewCase/Payments";
 import Settings from "./components/Settings";
@@ -61,13 +63,13 @@ const App = () => {
 
 
   let routes;
-  if (isloggedIn) {
+  if (!isloggedIn) {
     routes = (
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/vehicle-monitoring" element={<VehicleMonitoring />} />
         <Route path="/ticket-management" element={<TicketManagement />} />
-        <Route path="/driver-details" element={<DriverDetails />} />
+        <Route path="/new-registration" element={<DriverDetails />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/payments" element={<Payments />} />
         <Route path="/settings" element={<Settings />} />
@@ -88,22 +90,32 @@ const App = () => {
 
     <div className={`min-h-screen transition-colors duration-200 ${isDarkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-50 text-gray-900'}`}>
       <Router>
-        <NotificationsProvider>
+        <TopNavProvider>
+          <NotificationsProvider>
           <main className="flex h-screen">
             {isloggedIn && <Sidebar />}
             <div className="flex-1 flex flex-col">
-              <Suspense
-                fallback={
-                  <div className="center">
-                    <LoadingSpinner asOverlay />
-                  </div>
-                }
-              >
-                {routes}
-              </Suspense>
+                {isloggedIn && (
+                  <TopNavBar
+                    title="Bank Reconciliation"
+                    description="Match bank transactions with recorded entries to ensure accuracy"
+                  />
+                )}
+                <div className="flex-1 overflow-auto">
+                  <Suspense
+                    fallback={
+                      <div className="center">
+                        <LoadingSpinner asOverlay />
+                      </div>
+                    }
+                  >
+                    {routes}
+                  </Suspense>
+                </div>
             </div>
-          </main>
-        </NotificationsProvider>
+            </main>
+          </NotificationsProvider>
+        </TopNavProvider>
       </Router>
     </div>
   );

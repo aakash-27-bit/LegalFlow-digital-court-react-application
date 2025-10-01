@@ -1,12 +1,33 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import ParkingZoneMap from '../parking/ParkingZoneMap/ParkingZoneMap';
 import { Dialog } from '@headlessui/react';
 import { All_SPOTS_DATA } from '../../constants/PMS_CONSTANTS/ParkingSpots';
+import { useTopNav } from '../../shared/contexts/TopNavContext';
 
 const AdminDashboard = () => {
+    const { updateTopNav } = useTopNav();
     const [selectedFloor, setSelectedFloor] = useState(1);
     const [selectedSpot, setSelectedSpot] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {
+        updateTopNav({
+            title: "Parking Management System",
+            description: "Monitor and manage parking spaces across all floors",
+            buttons: [
+                {
+                    label: "Import Vehicle Data",
+                    icon: "upload",
+                    action: () => console.log("Import clicked")
+                },
+                {
+                    label: "Sync Sensors",
+                    icon: "sync",
+                    action: () => console.log("Sync clicked")
+                }
+            ]
+        });
+    }, [updateTopNav]);
 
     // Transform the floor data into the format expected by ParkingZoneMap
     const floorData = useMemo(() => {

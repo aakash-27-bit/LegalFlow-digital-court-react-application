@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
 
 const TicketManagement = () => {
   const [tickets, setTickets] = useState([]);
@@ -117,6 +118,7 @@ const TicketManagement = () => {
 
   return (
     <div className="p-6">
+      <NavigationHeader currentStep="Ticket Management" />
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold">Ticket Management</h1>
         
