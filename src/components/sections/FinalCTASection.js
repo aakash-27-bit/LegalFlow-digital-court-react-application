@@ -34,7 +34,6 @@ const FinalCTASection = () => {
             {' '}Streamline, digitize, and accelerate justice delivery
           </Box>
         </Typography>
-
         <Typography
           sx={{
             fontSize: '1.15rem',

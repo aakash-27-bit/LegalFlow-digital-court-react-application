@@ -22,22 +22,18 @@ const NewApplications = ({ refetch, data }) => {
                     closeModal={() => setOpenDetails((open) => !open)}
                 />}
             <div className="flex flex-row gap-2 items-end">
-
                 <p className="text-xl text-gray-800 font-bold">New Applications, </p><p className="text-sm font-medium italic text-red-700">Click to verify documents</p>
             </div>
             <div
                 className="w-full custom-scrollbar overflow-hidden mt-1 h-max rounded-sm bg-white flex flex-row gap-4 p-4"
             >
-                {
-                    data.length > 0 && data.map((item, index) => {
-                        return (
-                            <div
+                {data.length > 0 && data.map((item, index) => {
+                    return (<div
                                 key={index}
                                 className="p-2 rounded-lg shadow-nav flex flex-col justify-between items-end cursor-pointer"
                                 onClick={() => handleOpenModal(index)}
                             >
-                                <div>
-
+                            <div>
                                     <p className="text-md font-medium fort-circular">{item.caseTitle}</p>
                                     <p className="text-sm italic text-gray-400">{item.summary.slice(0, 80) + "..."}</p>
                                 </div>

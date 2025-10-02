@@ -13,14 +13,11 @@ const UpdateHearings = () => {
     const role = useSelector((state) => state.userAccount.role);
     let filter = { status: STATUS.PENDING };
     const { data, error, loading, refetch } = useGetAllCases(`${role}/${userId}`, filter);
-
     const [openCaseEditModal, setOpenCaseEditModal] = useState(false);
-
     const [selectedCase, setSelectedCase] = useState({});
 
     if (loading) { return <><LoadingSpinner asOverlay /></> }
     if (error) return <ErrorModal error={error} onClear={refetch} />
-
 
     const handleEditCase = (item, index) => {
         setSelectedCase({

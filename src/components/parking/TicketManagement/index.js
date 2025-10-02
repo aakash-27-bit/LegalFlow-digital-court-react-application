@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
+import NavigationArrow from '../../../components/shared/UIelements/NavigationArrow';
 
 const TicketManagement = () => {
   const [tickets, setTickets] = useState([]);
@@ -12,12 +13,9 @@ const TicketManagement = () => {
     type: 'all'
   });
 
-  useEffect(() => {
-    fetchTickets();
-  }, [userType, filters]);
-
-  const fetchTickets = async () => {
+  const fetchTickets = React.useCallback(async () => {
     try {
+      setLoading(true);
       const token = localStorage.getItem('Access-token');
       const response = await axios.get(
         `${process.env.REACT_APP_BASE_URL}/parking/tickets`,
@@ -36,7 +34,11 @@ const TicketManagement = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [userType, filters]);
+
+  useEffect(() => {
+    fetchTickets();
+  }, [fetchTickets]);
 
   const renderTicketTable = () => {
     if (userType === 'employee') {

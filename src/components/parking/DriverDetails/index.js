@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import NavigationArrow from '../../../components/shared/UIelements/NavigationArrow';
+
+const navigationRoutes = [
+  { path: '/driver-details', label: 'Driver Details' },
+  { path: '/ticket-management', label: 'Ticket Management' },
+  { path: '/vehicle-monitoring', label: 'Vehicle Monitoring' }
+];
 
 const DriverDetails = () => {
   const [formData, setFormData] = useState({
@@ -69,6 +76,7 @@ const DriverDetails = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
+      <NavigationArrow routes={navigationRoutes} />
       <h1 className="text-2xl font-semibold mb-6">Driver Details</h1>
       
       {error && (

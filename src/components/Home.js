@@ -17,15 +17,12 @@ const Home = () => {
         <div className="home-section hero-section-wrapper">
           <HeroSection />
         </div>
-
         <div className="home-section inventory-section-wrapper">
           <InventorySection />
         </div>
-
         <div className="home-section journey-section-wrapper">
           <JourneySection />
         </div>
-
         <div className="home-section updates-section-wrapper">
           <UpdatesSection />
         </div>

@@ -112,7 +112,7 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
   return (
     <div className={styles['map-container']}>
       <div className="relative w-full h-full min-h-[600px] overflow-auto">
-        <div className="absolute inset-0 grid grid-cols-4 gap-4 p-4">
+        <div className="absolute inset-0 grid grid-cols-4 gap-8 p-4">
           {slots.map((slot, index) => {
             // Debug log for each slot
             return (

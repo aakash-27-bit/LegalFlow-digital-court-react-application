@@ -6,7 +6,6 @@ import './footer.styles.css';
 
 
 const Footer = () => {
-
     const handleScrollToTop = () => {
         const el = document.querySelector('.hero-section-wrapper');
         if (el) {
@@ -15,8 +14,6 @@ const Footer = () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     }
-
-
     return (
         <Box className="footer">
             <Container className="footer-container">

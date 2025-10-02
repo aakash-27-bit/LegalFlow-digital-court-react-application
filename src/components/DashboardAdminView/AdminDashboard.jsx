@@ -10,24 +10,24 @@ const AdminDashboard = () => {
     const [selectedSpot, setSelectedSpot] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    useEffect(() => {
-        updateTopNav({
-            title: "Parking Management System",
-            description: "Monitor and manage parking spaces across all floors",
-            buttons: [
-                {
-                    label: "Import Vehicle Data",
-                    icon: "upload",
-                    action: () => console.log("Import clicked")
-                },
-                {
-                    label: "Sync Sensors",
-                    icon: "sync",
-                    action: () => console.log("Sync clicked")
-                }
-            ]
-        });
-    }, [updateTopNav]);
+    // useEffect(() => {
+    //     updateTopNav({
+    //         title: "Parking Management System",
+    //         description: "Monitor and manage parking spaces across all floors",
+    //         buttons: [
+    //             {
+    //                 label: "Import Vehicle Data",
+    //                 icon: "upload",
+    //                 action: () => console.log("Import clicked")
+    //             },
+    //             {
+    //                 label: "Sync Sensors",
+    //                 icon: "sync",
+    //                 action: () => console.log("Sync clicked")
+    //             }
+    //         ]
+    //     });
+    // }, [updateTopNav]);
 
     // Transform the floor data into the format expected by ParkingZoneMap
     const floorData = useMemo(() => {
@@ -61,7 +61,7 @@ const AdminDashboard = () => {
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-2xl font-semibold">Parking Management Dashboard</h1>
                 <div className="flex items-center gap-4">
-                    <label className="font-medium">Floor:</label>
+                    <label className="font-medium">Floor: {' '}</label>
                     <select
                         value={selectedFloor}
                         onChange={(e) => setSelectedFloor(Number(e.target.value))}

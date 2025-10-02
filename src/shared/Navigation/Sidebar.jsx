@@ -82,7 +82,6 @@ const Sidebar = () => {
                         </div>
                     )}
                 </div>
-
                 {/* Profile */}
                 <div className="relative">
                     <button
