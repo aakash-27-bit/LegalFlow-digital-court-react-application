@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import NavigationArrow from '../../../components/shared/UIelements/NavigationArrow';
 
@@ -50,21 +50,9 @@ const DriverDetails = () => {
 
     try {
       const token = localStorage.getItem('Access-token');
-      // First save driver details
-      const driverResponse = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/parking/driver`,
-        formPayload,
-        {
-          headers: {
-            ...token ? { Authorization: `Bearer ${token}` } : {},
-            'Content-Type': 'multipart/form-data'
-          }
-        }
-      );
-      // Create a new ticket entry for the registration
       const ticketPayload = {
         vehicleNumber: formData.vehicleNumber,
-        driverId: driverResponse.data.driverId, // Assuming the API returns driverId
+        //driverId: driverResponse.data.driverId, // Assuming the API returns driverId
         type: 'registration',
         status: 'pending',
         notes: `New vehicle registration for ${formData.driverName}`,
@@ -91,17 +79,8 @@ const DriverDetails = () => {
         updatedAt: new Date().toISOString()
       };
 
-      // Add to localStorage
       localStorage.setItem('parkingDrivers', JSON.stringify([...existingDrivers, newDriver]));
       localStorage.setItem('parkingTickets', JSON.stringify([...existingTickets, newTicket]));
-
-      // Optional: Still make the API call if needed
-      await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/parking/tickets`,
-        ticketPayload, {
-        headers: token ? { Authorization: `Bearer ${token}` } : {}
-      }
-      );
 
       setFormData({
         driverName: '',
@@ -110,10 +89,8 @@ const DriverDetails = () => {
         vehicleNumber: '',
         contactNumber: ''
       });
-
       // Redirect to ticket management page after successful submission
       navigate('/ticket-management');
-      
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred');
     } finally {
