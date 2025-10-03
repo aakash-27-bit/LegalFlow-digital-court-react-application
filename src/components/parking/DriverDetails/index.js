@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import NavigationArrow from '../../../components/shared/UIelements/NavigationArrow';
 
 const navigationRoutes = [
@@ -9,6 +10,7 @@ const navigationRoutes = [
 ];
 
 const DriverDetails = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     driverName: '',
     licenseNumber: '',
@@ -48,7 +50,8 @@ const DriverDetails = () => {
 
     try {
       const token = localStorage.getItem('Access-token');
-      await axios.post(
+      // First save driver details
+      const driverResponse = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/parking/driver`,
         formPayload,
         {
@@ -58,6 +61,47 @@ const DriverDetails = () => {
           }
         }
       );
+      // Create a new ticket entry for the registration
+      const ticketPayload = {
+        vehicleNumber: formData.vehicleNumber,
+        driverId: driverResponse.data.driverId, // Assuming the API returns driverId
+        type: 'registration',
+        status: 'pending',
+        notes: `New vehicle registration for ${formData.driverName}`,
+        violations: ['New Registration'],
+        amount: 0 // Or any registration fee if applicable
+      };
+
+      // Store in localStorage
+      const existingDrivers = JSON.parse(localStorage.getItem('parkingDrivers') || '[]');
+      const existingTickets = JSON.parse(localStorage.getItem('parkingTickets') || '[]');
+
+      const newDriver = {
+        id: Date.now().toString(),
+        ...formData,
+        licenseImage: formData.licenseImage ? URL.createObjectURL(formData.licenseImage) : null,
+        createdAt: new Date().toISOString()
+      };
+
+      const newTicket = {
+        id: `TKT-${Date.now()}`,
+        ...ticketPayload,
+        driverId: newDriver.id,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      };
+
+      // Add to localStorage
+      localStorage.setItem('parkingDrivers', JSON.stringify([...existingDrivers, newDriver]));
+      localStorage.setItem('parkingTickets', JSON.stringify([...existingTickets, newTicket]));
+
+      // Optional: Still make the API call if needed
+      await axios.post(
+        `${process.env.REACT_APP_BASE_URL}/parking/tickets`,
+        ticketPayload, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      }
+      );
 
       setFormData({
         driverName: '',
@@ -66,6 +110,9 @@ const DriverDetails = () => {
         vehicleNumber: '',
         contactNumber: ''
       });
+
+      // Redirect to ticket management page after successful submission
+      navigate('/ticket-management');
       
     } catch (err) {
       setError(err.response?.data?.message || 'An error occurred');
@@ -78,7 +125,6 @@ const DriverDetails = () => {
     <div className="max-w-2xl mx-auto p-6">
       <NavigationArrow routes={navigationRoutes} />
       <h1 className="text-2xl font-semibold mb-6">Driver Details</h1>
-      
       {error && (
         <div className="bg-red-50 text-red-600 p-3 rounded-md mb-4">
           {error}

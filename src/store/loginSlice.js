@@ -22,7 +22,7 @@ const loginSlice = createSlice({
             state.userName = '';
             state.role = ROLES.USER;
             localStorage.removeItem('Access-token');
-            localStorage.setItem('isLoggedIn', 'false'); // <-- Add this line
+            localStorage.setItem('isLoggedIn', 'false');//<-- Add this line
         },
         updateProfile: (state, action) => {
             state.userName = action.payload.userName || state.userName;

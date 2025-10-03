@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
-import NavigationArrow from '../../../components/shared/UIelements/NavigationArrow';
+// import NavigationArrow from '../../../components/shared/UIelements/NavigationArrow';
 
 const TicketManagement = () => {
   const [tickets, setTickets] = useState([]);
@@ -16,8 +16,40 @@ const TicketManagement = () => {
   const fetchTickets = React.useCallback(async () => {
     try {
       setLoading(true);
+
+      // Get data from localStorage
+      const storedTickets = JSON.parse(localStorage.getItem('parkingTickets') || '[]');
+      const storedDrivers = JSON.parse(localStorage.getItem('parkingDrivers') || '[]');
+
+      // Apply filters
+      let filteredTickets = storedTickets.filter(ticket => {
+        const matchesUserType = userType === 'guest' ? !ticket.isEmployee : true;
+        const matchesStatus = filters.status === 'all' ? true : ticket.status === filters.status;
+        const matchesDate = !filters.date ? true :
+          new Date(ticket.createdAt).toDateString() === new Date(filters.date).toDateString();
+
+        return matchesUserType && matchesStatus && matchesDate;
+      });
+
+      // Enrich tickets with driver details
+      const enrichedTickets = filteredTickets.map(ticket => {
+        const driver = storedDrivers.find(d => d.id === ticket.driverId) || {};
+        return {
+          ...ticket,
+          driverName: driver.driverName,
+          contactNumber: driver.contactNumber,
+          licenseNumber: driver.licenseNumber
+        };
+      });
+
+      // Sort by date, newest first
+      enrichedTickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+      setTickets(enrichedTickets);
+
+      // Optional: Still make the API call if needed for sync
       const token = localStorage.getItem('Access-token');
-      const response = await axios.get(
+      await axios.get(
         `${process.env.REACT_APP_BASE_URL}/parking/tickets`,
         {
           params: {
@@ -28,7 +60,6 @@ const TicketManagement = () => {
           headers: token ? { Authorization: `Bearer ${token}` } : {}
         }
       );
-      setTickets(response.data);
     } catch (error) {
       console.error('Error fetching tickets:', error);
     } finally {
@@ -36,10 +67,7 @@ const TicketManagement = () => {
     }
   }, [userType, filters]);
 
-  useEffect(() => {
-    fetchTickets();
-  }, [fetchTickets]);
-
+  useEffect(() => fetchTickets(), [fetchTickets]);
   const renderTicketTable = () => {
     if (userType === 'employee') {
       return (
@@ -47,19 +75,24 @@ const TicketManagement = () => {
           <thead className="bg-gray-50">
             <tr>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Ticket ID</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Driver Name</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Vehicle</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Violations</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Notes</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">License</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Contact</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Type</th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {tickets.map(ticket => (
               <tr key={ticket.id}>
                 <td className="px-6 py-4 whitespace-nowrap">{ticket.id}</td>
+                <td className="px-6 py-4">{ticket.driverName}</td>
                 <td className="px-6 py-4">{ticket.vehicleNumber}</td>
-                <td className="px-6 py-4">{ticket.violations.join(', ')}</td>
-                <td className="px-6 py-4">{ticket.notes}</td>
+                <td className="px-6 py-4">{ticket.licenseNumber}</td>
+                <td className="px-6 py-4">{ticket.contactNumber}</td>
+                <td className="px-6 py-4">{ticket.type}</td>
                 <td className="px-6 py-4">
                   <span className={`px-2 py-1 rounded-full text-xs ${
                     ticket.status === 'resolved' ? 'bg-green-100 text-green-800' :
