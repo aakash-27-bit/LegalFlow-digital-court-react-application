@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
 import { DEFAULT_TICKETS } from '../../../constants/PMS_CONSTANTS/defaultTickets';
 import { IoRefreshOutline } from 'react-icons/io5';
@@ -183,9 +182,7 @@ const TicketManagement = () => {
       <div className="bg-white shadow overflow-hidden rounded-lg">
         {loading ? (
           <div className="p-4 text-center">Loading...</div>
-        ) : (
-          renderTicketTable()
-        )}
+        ) : (renderTicketTable())}
       </div>
     </div>
   );
