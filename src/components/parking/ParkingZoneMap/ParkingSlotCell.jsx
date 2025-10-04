@@ -79,7 +79,7 @@ const ParkingSlotCell = ({ slotData, onClick, onMouseEnter, onMouseLeave, isActi
             </div>
 
             {/* Available Status */}
-            <div className="mt-auto mb-4 flex items-center text-[#4CD964]">
+            <div className="mt-auto mb-4 flex items-center text-[#4CD964]" onClick={handleClick}>
               <div className={`w-2 h-2 rounded-full mr-2 ${slotData.status === 'AVAILABLE' ? 'bg-[#4CD964]' : 'bg-[#FF3B30]'
                 }`} />
               <span className="text-sm font-medium">{slotData.status}</span>

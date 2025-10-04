@@ -142,7 +142,7 @@ const TicketManagement = () => {
           <h1 className="text-2xl font-semibold">Ticket Management</h1>
           <button
             onClick={refreshData}
-            className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+            className="p-2 rounded-full hover:bg-red-100 transition-colors border-1 border-gray-300"
             title="Refresh Data"
           >
             <IoRefreshOutline className="w-6 h-6 text-gray-600" />

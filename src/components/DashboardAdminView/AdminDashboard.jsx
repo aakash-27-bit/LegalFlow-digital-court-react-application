@@ -9,26 +9,6 @@ const AdminDashboard = () => {
     const [selectedFloor, setSelectedFloor] = useState(1);
     const [selectedSpot, setSelectedSpot] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    // useEffect(() => {
-    //     updateTopNav({
-    //         title: "Parking Management System",
-    //         description: "Monitor and manage parking spaces across all floors",
-    //         buttons: [
-    //             {
-    //                 label: "Import Vehicle Data",
-    //                 icon: "upload",
-    //                 action: () => console.log("Import clicked")
-    //             },
-    //             {
-    //                 label: "Sync Sensors",
-    //                 icon: "sync",
-    //                 action: () => console.log("Sync clicked")
-    //             }
-    //         ]
-    //     });
-    // }, [updateTopNav]);
-
     // Transform the floor data into the format expected by ParkingZoneMap
     const floorData = useMemo(() => {
         const currentFloor = All_SPOTS_DATA.floors.find(f => f.floor === selectedFloor);
