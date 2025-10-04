@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
 import { DEFAULT_TICKETS } from '../../../constants/PMS_CONSTANTS/defaultTickets';
 import { IoRefreshOutline } from 'react-icons/io5';
-
+import LoadingSpinner from './LoadingSpinner';
 const TicketManagement = () => {
   const [tickets, setTickets] = useState([]);
   const [userType, setUserType] = useState('guest'); // 'employee' or 'guest'
@@ -13,15 +13,18 @@ const TicketManagement = () => {
     type: 'all'
   });
 
-  const refreshData = () => {
+  const refreshData = async () => {
     setLoading(true);
     try {
+      // Simulate network delay for better UX
+      await new Promise(resolve => setTimeout(resolve, 800));
+
       if (userType === 'guest') {
         const storedDrivers = JSON.parse(localStorage.getItem('parkingDrivers') || '[]');
         setTickets([...DEFAULT_TICKETS, ...storedDrivers]);
       } else {
         const storedTickets = JSON.parse(localStorage.getItem('parkingTickets') || '[]');
-        setTickets(storedTickets);
+        setTickets(storedTickets.length ? storedTickets : DEFAULT_TICKETS);
       }
     } catch (error) {
       console.error('Error refreshing data:', error);
@@ -180,7 +183,10 @@ const TicketManagement = () => {
 
       <div className="bg-white shadow overflow-hidden rounded-lg">
         {loading ? (
-          <div className="p-4 text-center">Loading...</div>
+          <div className="p-4 text-center">
+            <LoadingSpinner />
+            <p className="mt-2 text-gray-600">Refreshing data...</p>
+          </div>
         ) : (renderTicketTable())}
       </div>
     </div>

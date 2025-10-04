@@ -55,7 +55,6 @@ const ParkingSlotCell = ({ slotData, onClick, onMouseEnter, onMouseLeave, isActi
             </div>
           </div>
 
-          {/* Availability Status */}
           <div className="space-y-1">
             <div className={`text-white py-2 rounded-lg text-center font-medium ${slotData.status === 'AVAILABLE' ? 'bg-[#4CD964]' : 'bg-[#FF3B30]'
               }`}>
