@@ -1,55 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import VehicleCard from './VehicleCard';
-import axios from 'axios';
+import { VEHICLE_LIST } from '../../../constants/PMS_CONSTANTS/vehicleList';
 
-const VehicleList = () => {
-  const [vehicles, setVehicles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchVehicles = async () => {
-      try {
-        const token = localStorage.getItem('Access-token');
-        const response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/parking/vehicles`,
-          {
-            headers: token ? { Authorization: `Bearer ${token}` } : {},
-          }
-        );
-        setVehicles(response.data);
-      } catch (err) {
-        setError(err.message);
-      }
-      setLoading(false);
-    };
-
-    fetchVehicles();
-  }, []);
-
-  const fetchVehicleDetails = async (vehicleNumber) => {
-    try {
-      // Integrate with third-party API to get vehicle details
-      const response = await axios.get(
-        `${process.env.REACT_APP_VEHICLE_API_URL}/${vehicleNumber}`
-      );
-      return response.data;
-    } catch (err) {
-      console.error('Error fetching vehicle details:', err);
-      return null;
-    }
-  };
-
-  if (loading) return <div className="flex justify-center p-8">Loading...</div>;
-  if (error) return <div className="text-red-500 p-4">{error}</div>;
+const VehicleList = ({ filter = 'all' }) => {
+  const filteredVehicles = VEHICLE_LIST.filter(vehicle => {
+    if (filter === 'all') return true;
+    if (filter === 'parked') return vehicle.status === 'parked';
+    if (filter === 'exited') return vehicle.status === 'exited';
+    return true;
+  });
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-      {vehicles.map((vehicle) => (
+      {filteredVehicles.map((vehicle) => (
         <VehicleCard
           key={vehicle.id}
           vehicle={vehicle}
-          onDetailsClick={() => fetchVehicleDetails(vehicle.number)}
         />
       ))}
     </div>

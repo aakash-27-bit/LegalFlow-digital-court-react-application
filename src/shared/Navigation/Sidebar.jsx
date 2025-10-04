@@ -21,7 +21,6 @@ const Sidebar = () => {
         if (itemUrl === '/new-registration') {
             return ['/new-registration', '/ticket-management', '/vehicle-monitoring'].includes(location.pathname);
         }
-        // Check if current path starts with the menu item's URL
         // This handles both exact matches and nested routes
         return location.pathname.startsWith(itemUrl) ||
             // Special case for home/dashboard

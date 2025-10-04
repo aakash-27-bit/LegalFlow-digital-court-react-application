@@ -9,7 +9,6 @@ const ParkingSlotCell = ({ slotData, onClick, onMouseEnter, onMouseLeave, isActi
   const handleMouseLeave = () => onMouseLeave?.();
 
   const hasFeature = (feature) => slotData.features.includes(feature);
-
   return (
     <div
       className={`transition-all duration-300 ease-in-out cursor-pointer rounded-2xl p-4 relative ${isActive ? 'w-64 bg-[#F1FFE7]' : 'w-48 h-48 bg-[#F1FFE7]'

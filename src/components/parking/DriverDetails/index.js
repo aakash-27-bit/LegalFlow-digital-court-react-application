@@ -49,10 +49,9 @@ const DriverDetails = () => {
     });
 
     try {
-      const token = localStorage.getItem('Access-token');
+      //const token = localStorage.getItem('Access-token');
       const ticketPayload = {
         vehicleNumber: formData.vehicleNumber,
-        //driverId: driverResponse.data.driverId, // Assuming the API returns driverId
         type: 'registration',
         status: 'pending',
         notes: `New vehicle registration for ${formData.driverName}`,

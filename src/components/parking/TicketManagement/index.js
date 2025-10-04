@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
 import { DEFAULT_TICKETS } from '../../../constants/PMS_CONSTANTS/defaultTickets';
 import { IoRefreshOutline } from 'react-icons/io5';
-// import NavigationArrow from '../../../components/shared/UIelements/NavigationArrow';
 
 const TicketManagement = () => {
   const [tickets, setTickets] = useState([]);

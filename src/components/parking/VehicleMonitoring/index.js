@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-import VehicleList from './VehicleList';
 import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
 import NavigationArrow from '../../../components/shared/UIelements/NavigationArrow';
+import VehicleList from './VehicleList';
+import { MONITORING_DATA } from '../../../constants/PMS_CONSTANTS/vehicleMonitoringData';
+import { IoRefreshOutline, IoWarningOutline } from 'react-icons/io5';
+import { BsCheckCircle } from 'react-icons/bs';
 
 const navigationRoutes = [
   { path: '/driver-details', label: 'Driver Details' },
@@ -11,13 +14,11 @@ const navigationRoutes = [
 
 const VehicleMonitoring = () => {
   const [filterStatus, setFilterStatus] = useState('all');
-
   return (
     <div className="p-6">
       <NavigationHeader currentStep="Vehicle Monitoring" />
       <NavigationArrow routes={navigationRoutes} />
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold">Vehicle Monitoring</h1>
         <div className="flex gap-4">
           <select
             value={filterStatus}
