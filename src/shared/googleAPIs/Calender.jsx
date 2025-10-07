@@ -62,15 +62,10 @@ export const addCalendarEvent = (startTime, address, clientName) => {
                     'calendarId': 'primary',
                     'resource': event,
                 })
-
-
                 request.execute(event => {
-                    console.log(event)
-                    window.open(event.htmlLink)
+                    console.log(event);
+                    window.open(event.htmlLink);
                 })
-
-
-
             })
     })
 }

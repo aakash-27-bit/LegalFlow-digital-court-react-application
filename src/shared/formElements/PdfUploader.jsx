@@ -12,10 +12,7 @@ const PdfUploader = ({
   const [isDisabled, setIsDisabled] = useState('');
 
   // Handle file selection
-  const handleFileChange = useCallback((e) => {
-    setFile(e.target.files[0]);
-  }, []);
-
+  const handleFileChange = useCallback((e) => setFile(e.target.files[0]), []);
   // handle file removal
   const removeFile = useCallback((e) => {
     e.preventDefault();
@@ -126,4 +123,3 @@ const PdfUploader = ({
 };
 
 export default PdfUploader;
-

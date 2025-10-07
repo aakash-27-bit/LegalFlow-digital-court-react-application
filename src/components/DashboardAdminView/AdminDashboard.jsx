@@ -1,11 +1,7 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import ParkingZoneMap from '../parking/ParkingZoneMap/ParkingZoneMap';
-import { Dialog } from '@headlessui/react';
 import { All_SPOTS_DATA } from '../../constants/PMS_CONSTANTS/ParkingSpots';
-import { useTopNav } from '../../shared/contexts/TopNavContext';
-
 const AdminDashboard = () => {
-    const { updateTopNav } = useTopNav();
     const [selectedFloor, setSelectedFloor] = useState(1);
     const [selectedSpot, setSelectedSpot] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);

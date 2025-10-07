@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTheme } from '../../../shared/contexts/ThemeContext.new';
 import * as d3 from 'd3';
 import styles from './styles/ParkingZoneMap.css';
 import ParkingSlotCell from './ParkingSlotCell';
@@ -9,25 +8,9 @@ const ZOOM_EXTENT = [1, 3];
 const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
   const navigate = useNavigate();
   const svgRef = useRef(null);
-  const { isDarkMode } = useTheme();
-
-  const themeColors = {
-    available: isDarkMode ? '#4B5563' : '#9ECAD6',
-    occupied: isDarkMode ? '#4A5568' : '#FFEAEA',
-    text: isDarkMode ? '#E5E7EB' : '#748DAE',
-    background: isDarkMode ? '#1F2937' : '#FFFFFF'
-  };
   const [activeSlot, setActiveSlot] = useState(null);
-  const [tooltipContent, setTooltipContent] = useState(null);
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
-  const [transform, setTransform] = useState(d3.zoomIdentity);
-  const legendItems = [
-    { label: 'Available', color: themeColors.available },
-    { label: 'Occupied', color: themeColors.occupied },
-  ];
-
   const handleZoom = useCallback((event) => {
-    setTransform(event.transform);
+    //setTransform(event.transform);
   }, []);
 
 
@@ -67,16 +50,16 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
   }, [activeSlot, onSlotClick, navigate]);
 
   const handleMouseEnter = useCallback((event, slot) => {
-    const rect = event.currentTarget.getBoundingClientRect();
-    setTooltipContent(slot.tooltipContent);
-    setTooltipPosition({
-      x: rect.left + rect.width / 2,
-      y: rect.top - 10,
-    });
+    // const rect = event.currentTarget.getBoundingClientRect();
+    // setTooltipContent(slot.tooltipContent);
+    // setTooltipPosition({
+    //   x: rect.left + rect.width / 2,
+    //   y: rect.top - 10,
+    // });
   }, []);
 
   const handleMouseLeave = useCallback(() => {
-    setTooltipContent(null);
+    //setTooltipContent(null);
   }, []);
 
   return (
