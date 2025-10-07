@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavigationHeader from '../../../shared/Navigation/NavigationHeader';
 import { DEFAULT_TICKETS } from '../../../constants/PMS_CONSTANTS/defaultTickets';
 import { IoRefreshOutline } from 'react-icons/io5';
+import { useNavigate } from 'react-router';
 
 const TicketManagement = () => {
   const [tickets, setTickets] = useState([]);
@@ -12,7 +13,7 @@ const TicketManagement = () => {
     status: 'all',
     type: 'all'
   });
-
+  const navigate = useNavigate();
   const refreshData = () => {
     setLoading(true);
     try {
@@ -121,7 +122,7 @@ const TicketManagement = () => {
                 {ticket.status !== 'paid' && (
                   <button
                     className="text-blue-600 hover:text-blue-800"
-                    onClick={() => {/* Handle payment */}}
+                    onClick={() => navigate('/screen-payments', { state: { ticket } })}
                   >
                     Pay Now
                   </button>

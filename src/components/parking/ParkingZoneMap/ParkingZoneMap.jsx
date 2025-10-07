@@ -11,22 +11,6 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
   const svgRef = useRef(null);
   const { isDarkMode } = useTheme();
 
-  // Calculate grid layout
-  const SLOT_WIDTH = 100;
-  //const SLOT_HEIGHT = 100;
-  const SLOT_MARGIN = 10;
-  //const SLOTS_PER_ROW = Math.floor(800 / (SLOT_WIDTH + SLOT_MARGIN));
-
-  // Position calculation function
-  // const calculatePosition = (index) => {
-  //   const row = Math.floor(index / SLOTS_PER_ROW);
-  //   const col = index % SLOTS_PER_ROW;
-  //   return {
-  //     x: col * (SLOT_WIDTH + SLOT_MARGIN),
-  //     y: row * (SLOT_HEIGHT + SLOT_MARGIN)
-  //   };
-  // };
-
   const themeColors = {
     available: isDarkMode ? '#4B5563' : '#9ECAD6',
     occupied: isDarkMode ? '#4A5568' : '#FFEAEA',
