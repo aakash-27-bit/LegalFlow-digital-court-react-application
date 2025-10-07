@@ -107,7 +107,7 @@ const CaseDetails = () => {
                                         <p key={index} > {`${item.fileTitle} : ${item.fileName}`}</p>
                                     )}
                                 </div>
-                                <button className="sticky bottom-0 rounded-md shadow-card text-white bg-blue-500 py-2 px-4 w-4/5" onClick={submitApplication} >Submit Application</button>
+                                <button className="sticky bottom-0 rounded-md shadow-card text-white bg-blue-500 py-2 px-4 w-4/5" onClick={submitApplication}>Submit Application</button>
                             </div>
                         )
                     }
