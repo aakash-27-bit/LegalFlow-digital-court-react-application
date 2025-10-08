@@ -17,7 +17,6 @@ const PaymentScreen = () => {
       order_id: "", // This will come from your backend
       handler: function (response) {
         // Handle success
-        console.log(response);
         handlePaymentSuccess(response);
       },
       prefill: {
@@ -58,7 +57,7 @@ const PaymentScreen = () => {
         </div>
         <button
           onClick={initializeRazorpay}
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+          classname="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
         >
           Pay Now
         </button>

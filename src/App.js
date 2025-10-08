@@ -16,7 +16,7 @@ import Authenticate from "./components/AuthPage/Authenticate";
 import VehicleMonitoring from "./components/parking/VehicleMonitoring";
 import TicketManagement from "./components/parking/TicketManagement";
 import DriverDetails from "./components/parking/DriverDetails";
-
+import PaymentScreen from "./components/parking/PaymentScreen/PaymentScreen";
 const App = () => {
   const isloggedIn = true;
   const { isDarkMode } = useTheme();
@@ -66,6 +66,7 @@ const App = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="/vehicle-monitoring" element={<VehicleMonitoring />} />
         <Route path="/ticket-management" element={<TicketManagement />} />
+        <Route path="/screen-payments" element={<PaymentScreen />} />
         <Route path="/new-registration" element={<DriverDetails />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/payments" element={<Payments />} />

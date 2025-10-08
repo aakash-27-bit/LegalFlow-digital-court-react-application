@@ -13,7 +13,6 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
     //setTransform(event.transform);
   }, []);
 
-
   const initializeZoom = useCallback(() => {
     const svg = d3.select(svgRef.current);
     const zoom = d3.zoom()
@@ -82,17 +81,6 @@ const ParkingZoneMap = ({ slots = [], onSlotClick, isLoading }) => {
           })}
         </div>
       </div>
-
-      {/* <ParkingLegend legendItems={legendItems} />
-      <ZoomControls
-        onZoomIn={handleZoomIn}
-        onZoomOut={handleZoomOut}
-        onReset={handleZoomReset}
-      />
-      <ParkingTooltip
-        content={tooltipContent}
-        position={tooltipPosition}
-      /> */}
 
       {isLoading && (
         <div className={styles['loading-overlay']}>

@@ -9,6 +9,7 @@ import { IoCashOutline } from "react-icons/io5";
 import { FaLaptop } from "react-icons/fa";
 import iciciImage from "../assets/iciciLogo.png";
 import axisImage from "../assets/axisBank.png";
+import { Bs2Circle } from "react-icons/bs";
 
 export const ROLES = {
     USER: 'user',
@@ -42,6 +43,12 @@ export const userSideBar = [
         title: 'Wallet Topup',
         url: '/payments',
         type: 'redirection',
+    },
+    {
+        icon: Bs2Circle,
+        title: 'Payments Screen',
+        url: '/screen-payments',
+        type: 'paymentsScreen'
     },
     {
         icon: IoSettingsOutline,

@@ -114,7 +114,7 @@ const TicketManagement = () => {
                 {ticket.status !== 'paid' && (
                   <button
                     className="text-blue-600 hover:text-blue-800"
-                    onClick={() => navigate('/screen-payments', { state: { ticket } })}
+                    onClick={() => navigate('/screen-payments')}
                   >
                     Pay Now
                   </button>
@@ -180,16 +180,12 @@ const TicketManagement = () => {
             </select>
             <FaChevronDown className="absolute right-3 top-3 text-gray-500 pointer-events-none" />
           </div>
-
         </div>
       </div>
-
       <div className="bg-white shadow overflow-hidden rounded-lg">
         {loading ? (
           <div className="p-4 text-center">Loading...</div>
-        ) : (
-          renderTicketTable()
-        )}
+        ) : renderTicketTable()}
       </div>
     </div>
   );
